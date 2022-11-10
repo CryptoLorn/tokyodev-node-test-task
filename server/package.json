@@ -2,9 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -12,11 +12,13 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "email-templates": "^10.0.1",
     "express": "^4.18.2",
-    "sequelize": "^6.25.4",
+    "nodemailer": "^6.8.0",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
-    "nodemailer": "^6.8.0"
+    "pug": "^3.0.2",
+    "sequelize": "^6.25.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",

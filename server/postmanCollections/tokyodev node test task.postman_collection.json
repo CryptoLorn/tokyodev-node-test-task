@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "42c470b3-6e6a-4184-aaa5-88baf2ca8f83",
+		"name": "tokyodev node test task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21537729"
+	},
+	"item": [
+		{
+			"name": "positions request",
+			"item": [
+				{
+					"name": "Get positions with params",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:5000/positions?level=junior",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"positions"
+							],
+							"query": [
+								{
+									"key": "level",
+									"value": "junior"
+								},
+								{
+									"key": "category",
+									"value": "nodejs",
+									"disabled": true
+								},
+								{
+									"key": "tag",
+									"value": "overseas",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create position",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"nodejs\",\r\n    \"level\": \"Middle\",\r\n    \"company\": \"Rakuten\",\r\n    \"description\": \"We are looking for people who are flexible and highly skilled, with an interest in languages and other cultures. We are open to overseas candidates looking to relocate to Japan.\",\r\n    \"japaneseRequired\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all positions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get position by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/positions/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"positions",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update position by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"level\": \"junior\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/positions/3",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"positions",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete position by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/positions/3",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"positions",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "applicant request",
+			"item": [
+				{
+					"name": "Get all applicants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/applicants",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"applicants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create applicant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test2@gmail.com\",\r\n    \"categories\": [\"angular\"],\r\n    \"japaneseKnowledge\": true,\r\n    \"level\": \"middle\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/applicants",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"applicants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update applicant",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"lorntrade2018@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/applicants/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"applicants",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete applicant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/applicants/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"applicants",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,6 +1,5 @@
 const {Position} = require('../models/position.model');
-const {Applicant} = require('../models/applicant.model');
-const {sendEmail} = require("../services/email.service");
+const {sendLetterIfAddPosition, sendLetterIfPositionDelete} = require("../services/emailSendler.service");
 
 module.exports = {
     create: async (req, res) => {
@@ -8,27 +7,15 @@ module.exports = {
             const {category, level, company, description, japaneseRequired} = req.body;
             let position;
 
-            // if (description) {
-            //     position = await Position.create({category, level, company, description, japaneseRequired});
-            // } else {
-            //     position = await Position.create({category, level, company, japaneseRequired});
-            // }
+            if (description) {
+                position = await Position.create({category, level, company, description, japaneseRequired});
+            } else {
+                position = await Position.create({category, level, company, japaneseRequired});
+            }
 
-            const applicants = await Applicant.findAll();
+            await sendLetterIfAddPosition(category, level, company, japaneseRequired);
 
-            applicants.forEach(applicant => {
-                applicant.categories.forEach(el => {
-                    if (applicant.japaneseKnowledge === true && applicant.level === level && el === category) {
-                        sendEmail(applicant.email, 'order_arrived');
-                    }
-
-                    if (applicant.japaneseKnowledge === false && japaneseRequired === false && applicant.level === level && el === category) {
-                        sendEmail(applicant.email, 'order_arrived');
-                    }
-                })
-            })
-
-            return res.json('ok');
+            return res.json(position);
         } catch (e) {
             console.log(e);
         }
@@ -113,6 +100,8 @@ module.exports = {
     deleteById: async (req, res) => {
         try {
             const {id} = req.params;
+
+            await sendLetterIfPositionDelete(id);
 
             await Position.destroy({where: {id}});
 
